@@ -77,7 +77,7 @@ public class ArticleCardsQueryImpl implements ArticleCardsQuery {
 
     @Override
     public String getArticleRootPath() {
-        return articlepath;
+        return articlepath;//https://github.com/RohitSatya45/Alpha.git
     }
 
     @Override
