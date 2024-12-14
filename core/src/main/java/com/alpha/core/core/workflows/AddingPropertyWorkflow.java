@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
 import javax.jcr.Session;
+import java.util.Iterator;
+import java.util.Set;
 
 @Component(service= WorkflowProcess.class, property={"process.label=Adding Property"})
 public class AddingPropertyWorkflow implements WorkflowProcess {
@@ -20,6 +22,7 @@ public class AddingPropertyWorkflow implements WorkflowProcess {
 
     @Override
     public void execute(WorkItem workItem, WorkflowSession workflowSession, MetaDataMap metaDataMap) throws WorkflowException {
+        LOG.info("--------------------------------------------");
         try {
             WorkflowData workflowData = workItem.getWorkflowData();
             if (workflowData.getPayloadType().equals("JCR_PATH")) {
@@ -27,14 +30,22 @@ public class AddingPropertyWorkflow implements WorkflowProcess {
                 String path = workflowData.getPayload().toString() + "/jcr:content";
                 Node node = (Node) session.getItem(path);
                 String[] processArgs = metaDataMap.get("PROCESS_ARGS", String.class).toString().split(",");
+                MetaDataMap mdm=workItem.getWorkflow().getWorkflowData().getMetaDataMap();
                 for (String wfArgs : processArgs) {
                     String[] args = wfArgs.split(":");
                     String prop = args[0];
                     String value = args[1];
                     if (node != null) {
+                        mdm.put(prop,value);
                         node.setProperty(prop, value);
                     }
                 }
+                Set<String> keyset=mdm.keySet();
+                Iterator<String>i= keyset.iterator();
+                while(i.hasNext()){
+                    String key=i.next();
+                    LOG.info("\n Item Key:{},value:{}",key,mdm.get(key));
+            }
             }
         } catch (Exception e) {
             LOG.info("\n error message {}", e.getMessage());

@@ -51,12 +51,12 @@ public class ArticleCardsQueryImpl implements ArticleCardsQuery {
             } catch (Exception e) {
                 Log.info("\n QuryBuilder Error : {}",e.getMessage());
             }
-            SearchResult searchResult=query.getResult();
-            for(Hit hit:searchResult.getHits()){
+            SearchResult searchResult=query.getResult();//search results represent searcresults of a jcr quey.
+            for(Hit hit:searchResult.getHits()){ //hit reprsents singlr search result(node and resource).
                 ArticleDetailsHelper articleDetailsHelper =new ArticleDetailsHelper();
                 String path=null;
                 try{
-                    path=hit.getPath();
+                    path=hit.getPath();//it will give the path.
                     Resource articleResource=resourceResolver.getResource(path);
                     Page articlePage = articleResource.adaptTo(Page.class);
                     String title= articlePage.getTitle();
