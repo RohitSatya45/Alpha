@@ -52,17 +52,18 @@ public class JobSchedulers implements Job {
         scheduler.schedule(this, s);
 
         ScheduleOptions d= scheduler.EXPR("0 26 14 1/1 * ? *");
-        scheduler.schedule(this, d);
         Map<String, Serializable> b=new HashMap<>();
         b.put("country","j");
         b.put("url","japan.com");
         d.config(b);
+        scheduler.schedule(this, d);
+
         ScheduleOptions e = scheduler.EXPR("0 27 14 1/1 * ? *");
-        scheduler.schedule(this, e);
         Map<String, Serializable> c=new HashMap<>();
         c.put("country","rus");
         c.put("url","russia.com");
         e.config(c);
+        scheduler.schedule(this, e);
 
     }
 
