@@ -1,4 +1,4 @@
-/*package com.alpha.core.core.schedulers;
+package com.alpha.core.core.schedulers;
 
 import com.alpha.core.core.config.SchedulerConfig;
 import org.apache.sling.commons.scheduler.ScheduleOptions;
@@ -54,4 +54,4 @@ public class RunnableScheduler implements Runnable {
         scheduler.schedule(this, scheduleOptions);
 
     }
-}*/
+}
