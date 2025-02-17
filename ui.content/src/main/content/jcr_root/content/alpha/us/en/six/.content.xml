@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2025-01-20T17:30:48.351+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/alpha/settings/wcm/templates/page-content"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="six"
+        sling:resourceType="alpha/components/page"
+        node="yes">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="alpha/components/container"
+            layout="responsiveGrid">
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="alpha/components/container"
+                layout="responsiveGrid">
+                <title
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="alpha/components/title"/>
+                <container
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="alpha/components/container"
+                    layout="responsiveGrid">
+                    <articlescardlist
+                        jcr:created="{Date}2024-12-05T16:19:13.268+05:30"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2024-12-10T11:53:55.947+05:30"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="alpha/components/articlescardlist"
+                        articlepath="/content/alpha/us/en/cloud/testname"/>
+                    <weather
+                        jcr:created="{Date}2025-01-13T15:00:26.409+05:30"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2025-01-20T17:30:48.346+05:30"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="alpha/components/weather"
+                        city="Hyderabad"/>
+                </container>
+            </container>
+        </root>
+    </jcr:content>
+</jcr:root>

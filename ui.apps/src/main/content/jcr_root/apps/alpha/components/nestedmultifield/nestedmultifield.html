@@ -1,0 +1,16 @@
+<h1>nested multifield</h1>
+<div data-sly-use.var="com.alpha.core.core.models.NestedMultifield">
+<h1>test1</h1>
+<div data-sly-list.item="${var.allBookDetails}">
+---->${itemList.count}--->
+<p>BookName: ${item.bookname}</p>
+<p>BookPublishedYear: ${'MMM dd, yyyy' @ format= item.bookpublishedyear}</p>
+<p>noofcopies: ${item.noofcopies}</p>
+<div data-sly-list.items="${item.bookeditions}">
+<p>BookEditionName: ${items.bookeditionname}</p>
+<p>EditionPublishedYear : ${'MMM dd, yyyy' @ format=items.editionpublishedyear}</p>
+</div>
+</div>
+</div>
+
+

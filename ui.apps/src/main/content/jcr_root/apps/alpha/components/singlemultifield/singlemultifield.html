@@ -1,0 +1,11 @@
+<h1>single multifield check </h1>
+<div data-sly-use.var="com.alpha.core.core.models.SingleMultifield">
+<h1>${var.authorName}</h1>
+<div data-sly-list.item="${var.books}">
+----->${itemList.count}----->
+<h2>${item}</h2>
+</div>
+<h1>${var.books @ join= ','}</h1>
+</div>
+
+

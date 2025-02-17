@@ -1,0 +1,55 @@
+<!--<h1>Article Cards</h1>
+<div data-sly-use.articlecards="com.alpha.core.core.models.ArticleCards">
+<h5>hello</h5>
+<div data-sly-list="${articlecards.title}">
+${itemList.count}
+<p>${item}</p>
+</div>
+</div>--> this is using normal iterator below is using query debugger
+
+
+
+<div class="cmp-article-list">
+    <h1 class="cmp-article-list__heading">Article List</h1>
+    <sly data-sly-use.model = "com.alpha.core.core.models.ArticleCardsQuery">
+        <div class="cmp-article-list__cards-container">
+            <sly data-sly-list.articleList="${model.articleDetails}">
+                <div class="cmp-article-list__cards">
+                    <h2 class="cmp-article-list__card-title">${articleList.title}</h2>
+                    <div class="cmp-article-list__card-description">${articleList.description}</div>
+                    <div class="cmp-article-list__card_btn_container">
+                        <a href="${articleList.path}.html" class="cmp-article-list__card-btn">Explore</a>
+                    </div>
+                </div>
+            </sly>
+        </div>
+
+    </sly>
+</div>
+
+<style>
+.cmp-article-list__cards-container{
+display:flex;
+justify-content:space-evenly;
+}
+.cmp-article-list__cards{
+display:flex;
+flex-direction:column;
+padding:10px;
+width:350px;
+border: 1px solid black;
+}
+.cmp-article-list__card-btn{
+background-color:green;
+color:#FFFFFF;
+text-align:center;
+padding: 15px 40px;
+}
+.cmp-article-list__card_btn_container{
+margin:20px;
+text-align:center;
+}
+.cmp-article-list__card-title{
+text-align:center;
+}
+</style>
