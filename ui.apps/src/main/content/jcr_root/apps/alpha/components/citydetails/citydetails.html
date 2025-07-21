@@ -1,0 +1,6 @@
+<div class="details-wrappers" data-city="${properties.cityname}">
+<div id="details">Please find details of your city ${properties.cityname}...</div>
+</div>
+<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientLib.all @ categories='details.clientlib'}"/>
+

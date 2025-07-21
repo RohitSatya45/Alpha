@@ -1,0 +1,11 @@
+<div class="city-dropdown-wrapper">
+  <label for="citySelect">Select a City:</label>
+  <select id="citySelect" data-city-dropdown>
+    <option disabled selected>Loading cities...</option>
+  </select>
+</div>
+
+<div id="detailsContainer"></div>
+
+<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientLib.all @ categories='detailsdropdown.clientlib'}"/>
