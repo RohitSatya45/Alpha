@@ -586,6 +586,12 @@ Bundle-DocURL:
                 <version>1.0.1</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.apache.sling</groupId>
+                <artifactId>org.apache.sling.models.impl</artifactId>
+                <version>1.4.4</version>  <!-- ✅ Centralized versioning -->
+                <scope>provided</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

@@ -8,6 +8,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.*;
 import org.slf4j.Logger;
@@ -19,7 +20,13 @@ import javax.inject.Named;
 
 @Model(adaptables= SlingHttpServletRequest.class,
         adapters= HelloAem.class,
-        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL,
+        resourceType = "alpha/components/helloaem"
+)
+@Exporter(
+        name = "jackson",
+        extensions = "json"
+)
 
 public class HelloAemImpl implements HelloAem {
     private static final Logger log= LoggerFactory.getLogger(HelloAemImpl.class);
