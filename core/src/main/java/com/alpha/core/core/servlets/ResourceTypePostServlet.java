@@ -23,21 +23,18 @@ import java.io.IOException;
 )
 public class ResourceTypePostServlet extends SlingAllMethodsServlet {
     private static final Logger log = LoggerFactory.getLogger(ResourceTypePostServlet.class);
-
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
-        ResourceResolver resourceResolver = request.getResourceResolver();
-        String resourcePath = request.getParameter("resourcePath");
+        Resource resource = request.getResource(); // ✅ Now we're getting the resource from request
         String propertyName = request.getParameter("propertyName");
         String propertyValue = request.getParameter("propertyValue");
 
         try {
-            Resource resource = resourceResolver.getResource(resourcePath);
             if (resource != null) {
                 ModifiableValueMap modifiableValueMap = resource.adaptTo(ModifiableValueMap.class);
                 if (modifiableValueMap != null) {
                     modifiableValueMap.put(propertyName, propertyValue);
-                    resourceResolver.commit();
+                    request.getResourceResolver().commit();
                     response.getWriter().write("Property added successfully!");
                 } else {
                     response.getWriter().write("Failed to adapt resource to ModifiableValueMap.");
@@ -50,4 +47,5 @@ public class ResourceTypePostServlet extends SlingAllMethodsServlet {
             response.getWriter().write("Error: " + e.getMessage());
         }
     }
+
 }

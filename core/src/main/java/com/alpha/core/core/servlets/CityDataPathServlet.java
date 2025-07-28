@@ -32,6 +32,17 @@ public class CityDataPathServlet extends SlingSafeMethodsServlet {
         if (city == null || city.trim().isEmpty()) {
             city = "Hyderabad";
         }
+        try {
+            String json = fetchWeatherJson(city);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(json);
+        } catch (IOException e) {
+            response.setStatus(SlingHttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().write("{\"error\":\"Failed to fetch data\"}");
+        }
+    }
+    protected String fetchWeatherJson(String city) throws IOException{
         String encodeCity = URLEncoder.encode(city, "UTF-8");
         String apiURL = String.format(API_URL_TEMPLATE, encodeCity, API_KEY);
         URL url = new URL(apiURL);
@@ -46,8 +57,7 @@ public class CityDataPathServlet extends SlingSafeMethodsServlet {
                 sb.append(line);
             }
         }
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(sb.toString());
+        return sb.toString();
+
     }
 }

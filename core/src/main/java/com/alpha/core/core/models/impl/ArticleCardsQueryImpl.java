@@ -86,3 +86,15 @@ public class ArticleCardsQueryImpl implements ArticleCardsQuery {
     }
 }
 
+/*
+code for printing first 5 pages which having comonent x.
+Map<String, String> predicate = new HashMap<>();
+predicate.put("1_path", articlepath); // Your page root path
+predicate.put("2_type", "cq:Page");
+predicate.put("3_property", "jcr:content//*sling:resourceType"); // Search recursively inside the page
+predicate.put("3_property.value", "your/component/path"); // Replace with actual component resourceType
+query = queryBuilder.createQuery(PredicateGroup.create(predicate), session);
+query.setHitsPerPage(5); // 👈 Limit to first 5 pages only
+for jcr:to search only one leve we use star between //.
+*/
+
